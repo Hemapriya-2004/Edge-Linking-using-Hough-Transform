@@ -7,45 +7,94 @@ Anaconda - Python 3.7
 
 ## Algorithm:
 ### Step1:
-<br>
+Import the required modules.
 
 ### Step2:
-<br>
+Import the image to operate on.
 
 ### Step3:
-<br>
+Convert the imported image from BGR to GRAYSCALE.
 
 ### Step4:
-<br>
+Find the edges using canny edge detector and display the image.
 
 ### Step5:
-<br>
+Detect the points that form a line using hough transform.
 
+### Step6:
+Draw the lines on the image
+
+### Step7:
+Display the output
+
+### Step8:
+End the program.
 
 ## Program:
 ```
+
+# Read image and convert it to grayscale image
+
+
+
+import cv2
+import matplotlib.pyplot as plt
+import numpy as np
+image = cv2.imread("suduko.webp")
+grayImage = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+plt.imshow(grayImage)
+cv2.imshow("Original Image",image)
+cv2.imshow("Gray Image",grayImage)
+
+
+# Find the edges in the image using canny detector and display
+
+
+import cv2
+import matplotlib.pyplot as plt
+import numpy as np
+image = cv2.imread("sudo.png")
+grayImage = cv2.cvtColor(image,cv2.COLOR_BGR2GRAY)
+plt.imshow(grayImage,'gray')
+cv2.imshow("Original Image",image)
+cv2.imshow("Gray Image",grayImage)
+
+
+
+
+
+# Detect points that form a line using HoughLinesP
+lines = cv2.HoughLinesP(cannyEdges,1,np.pi/180,threshold=80,minLineLength = 50,maxLineGap = 250)
+
+
+# Draw lines on the image
+for line in lines:
+x1, y1, x2, y2 = line [0]
+cv2.line(image,(x1, y1),(x2, y2),(255, 0, 0),3)
+
+
+# Display the result
+
+plt.title("Hough Transform")
+plt.imshow(image,'gray')
+plt.show()
+
+
 
 ```
 ## Output
 
 ### Input image and grayscale image
-<br>
-<br>
-<br>
-<br>
+### input image:
+![output](https://github.com/Hemapriya-2004/Edge-Linking-using-Hough-Transform/blob/main/1.png?raw=true)
+### grayscale image:
+![output](https://github.com/Hemapriya-2004/Edge-Linking-using-Hough-Transform/blob/main/2.png?raw=true)
 
 ### Canny Edge detector output
-<br>
-<br>
-<br>
-<br>
-
+![output](https://github.com/Hemapriya-2004/Edge-Linking-using-Hough-Transform/blob/main/3.png?raw=true)
 
 ### Display the result of Hough transform
-<br>
-<br>
-<br>
-<br>
+![output](https://github.com/Hemapriya-2004/Edge-Linking-using-Hough-Transform/blob/main/4.png?raw=true)
 
 
 
